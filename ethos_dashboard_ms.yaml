@@ -1,0 +1,27 @@
+﻿AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  ethosdashboardms:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: batch_ethos_dashboard_fetch.lambda_handler
+      Runtime: python3.6
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 6
+      Role: >-
+        arn:aws:iam::274922771376:role/service-role/ethos_dashboard_micro_service
+      Events:
+        Schedule1:
+          Type: Schedule
+          Properties:
+            Schedule: rate(2 minutes)
+      Environment:
+        Variables:
+          ETHOS_ID: mnonce
+          keep: >-
+            cddc43 244e62 b70233 45051d 287e15 ee803a 590391 9e423e a30e2a
+            aaea9e 452818 547083 d72b59 eb5d46 e59cac 44abc2 a484e1 67b058
+            11edbc 70ef8e 614ab7
