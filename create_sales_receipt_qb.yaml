@@ -1,0 +1,25 @@
+﻿AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  createsalesreceiptqb:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: com.mynonce.CreateSalesReceipts
+      Runtime: java8
+      CodeUri: .
+      Description: ''
+      MemorySize: 256
+      Timeout: 100
+      Role: 'arn:aws:iam::274922771376:role/service-role/create_sales_receipt_qb'
+      Events:
+        Schedule1:
+          Type: Schedule
+          Properties:
+            Schedule: rate(1 hour)
+      Environment:
+        Variables:
+          company_id: '193514689099464'
+          oauth_type: '2'
+          oauth2_accessToken: >-
+            eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..-FhhfNKR7KAlakbGVED6YQ.lI1DYtezsjD8gOavSPHyvkFYebkDzXO-wHMYRybAeQwAzeybsSblcmwBaQBF8E_Cb7ombR8JqD1e5MjDIh04OwfRvFmstROXGz7XX8KAg4ezZkLbkKx39MRq6tY8JpdIhpjrjz-QbySbF2Yug9Ktp_lFkqGmRr423pHs42Mh_rF_LPxNhKwgaZifKI4HMT3IYsa2xFLVPrtN5dMM4oPNNtnTeQD8a5PpeVs8JIwK47xNPW2n8i6jXHXm0oFUSqHd9KHN5WSJklMQrjIQzCU5UzqGiJsSiHUvvp5ZLFKEdQWgeLGY1x8iMD9bxuGleW50jKAmHa938ynWBTeyjQ-1qxxFNa310Z2nnIa-RAW4FagpNz5PgiplkO7TY4Oq8-Vod119LfaYJ4QGBTrhBcBY6V83JcEqoXips72jO3JJb3X_P3wdlvBey_e2b070wcJSq1Mm-tw5d8JuAhGDeCAHteSJYS-3RT06iBvn_xt08f8a17DKVSZcnHAtWLdyBfXA7MSwtopbNxYOCzH1qXM9e9NVlsmXDcB0jFL8VfyQQcYb0l1wNUSYA15pAG-IsSCyyaMgi0uSrp8tmUiVpp7ZiR8aJTQsMDAnHJEGhpVTdGqvE4W6AX3lR8_Q--pxFR1XqLRRfLrTKyVzUM2DyfPKAcNdRtZ3SWzab32XDHTmXtd94NxRn5ry-aIv1J9WrlQ21k9M0AHOSgwRUdduO6Lwzw.sYu-UKRHgI3YOHFIgG4Ykw
