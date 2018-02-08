@@ -6,11 +6,12 @@ repositories {
 
 dependencies {
     compile (
-				'com.amazonaws:aws-lambda-java-core:1.1.0',
-				'com.amazonaws:aws-lambda-java-events:1.1.0',
-				'com.intuit.quickbooks-online:ipp-v3-java-devkit:3.0.5',
-				'com.intuit.quickbooks-online:ipp-v3-java-data:3.0.5'
-    )
+			'com.amazonaws:aws-lambda-java-core:1.1.0',
+			'com.amazonaws:aws-lambda-java-events:1.1.0',
+			'com.intuit.quickbooks-online:ipp-v3-java-devkit:3.0.5',
+			'com.intuit.quickbooks-online:ipp-v3-java-data:3.0.5',
+			'com.intuit.quickbooks-online:oauth2-platform-api:3.0.0:jar-with-dependencies'
+		)
 }
 
 task buildZip(type: Zip) {

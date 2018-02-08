@@ -17,14 +17,6 @@ import java.util.Map;
 
 public class ContextFactory {
 
-	private static final String companyID = "company_id";
-	private static final String consumerKey = "consumer_key";
-	private static final String consumerSecret = "consumer_secret";
-	private static final String accessToken = "oauth_accessToken";
-	private static final String accessTokenSecret = "oauth_accessTokenSecret";
-	private static final String bearerToken = "oauth2_accessToken";
-	
-
 	/**
 	 * Initializes Context for a given app/company profile
 	 * 
@@ -32,16 +24,9 @@ public class ContextFactory {
 	 * @throws FMSException
 	 *
 	 */
-	public static Context getContext() throws FMSException {
-		//create oauth object
-		IAuthorizer oauth;
-		if(System.getenv("oauth_type").equals("1")) {
-			oauth = new OAuthAuthorizer(System.getenv(consumerKey), System.getenv(consumerSecret), System.getenv(accessToken), System.getenv(accessTokenSecret));
-		} else {
-			oauth = new OAuth2Authorizer(System.getenv(bearerToken));
-		}
-		//create context
-		Context context = new Context(oauth, ServiceType.QBO, System.getenv(companyID));
+	public static Context getContext(String bearerToken, String companyID) throws FMSException {
+		IAuthorizer oauth = new OAuth2Authorizer(bearerToken);
+		Context context = new Context(oauth, ServiceType.QBO, companyID);
 
 		return context;
 	}

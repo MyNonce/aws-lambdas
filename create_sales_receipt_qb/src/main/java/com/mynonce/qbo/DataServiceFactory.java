@@ -18,8 +18,8 @@ public class DataServiceFactory {
 	 * @return
 	 * @throws FMSException
 	 */
-	public static DataService getDataService() throws FMSException {
+	public static DataService getDataService(String bearerToken, String companyID) throws FMSException {
 		//create dataservice
-		return new DataService(ContextFactory.getContext());
+		return new DataService(ContextFactory.getContext(bearerToken, companyID));
 	}
 }
