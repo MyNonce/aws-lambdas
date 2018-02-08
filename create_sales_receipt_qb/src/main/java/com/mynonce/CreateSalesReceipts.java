@@ -92,7 +92,6 @@ public class CreateSalesReceipts implements RequestHandler<Object, Object> {
 			OAuth2PlatformClientFactory factory = new OAuth2PlatformClientFactory();
 
 			OAuth2PlatformClient client  = factory.getOAuth2PlatformClient();
-			factory.showConfig(context);
 			String refreshToken = oAuthDocument.getRefresh_token();
 			context.getLogger().log("REFRESH TOKEN = " + refreshToken+"\n");
 			BearerTokenResponse bearerTokenResponse = client.refreshToken(refreshToken);
