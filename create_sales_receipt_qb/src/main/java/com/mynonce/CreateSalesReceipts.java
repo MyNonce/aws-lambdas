@@ -95,7 +95,10 @@ public class CreateSalesReceipts implements RequestHandler<Object, Object> {
 			String refreshToken = oAuthDocument.getRefresh_token();
 			context.getLogger().log("REFRESH TOKEN = " + refreshToken+"\n");
 			BearerTokenResponse bearerTokenResponse = client.refreshToken(refreshToken);
+
+			qbAuth_table.deleteItem("refresh_token", refreshToken);
 			updateOAuthDocument(bearerTokenResponse);
+
 			return bearerTokenResponse.getAccessToken();
 		}
 		catch (Exception ex) {
