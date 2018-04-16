@@ -148,6 +148,12 @@ public class CreateSalesReceipts implements RequestHandler<Object, Object> {
 			itemRef.setValue("17");
 			return itemRef;
 		}
+		if (payment.getPool().equalsIgnoreCase("nanopool")){
+			ReferenceType itemRef = new ReferenceType();
+			itemRef.setName("Nano Pool");
+			itemRef.setValue("18");
+			return itemRef;
+		}
 		if (payment.getPool().equalsIgnoreCase("siamining")){
 			ReferenceType itemRef = new ReferenceType();
 			itemRef.setName("Siamining");
@@ -166,6 +172,12 @@ public class CreateSalesReceipts implements RequestHandler<Object, Object> {
 			itemRef.setValue("43");
 			return itemRef;
 		}
+		if (payment.getPool().equalsIgnoreCase("nanopool")){
+			ReferenceType itemRef = new ReferenceType();
+			itemRef.setName("Coin Wallets:Coinbase Wallet");
+			itemRef.setValue("73");
+			return itemRef;
+		}
 		if (payment.getPool().equalsIgnoreCase("siamining")){
 			ReferenceType itemRef = new ReferenceType();
 			itemRef.setName("Coin Wallets:Siacoin Wallet");
@@ -182,6 +194,8 @@ public class CreateSalesReceipts implements RequestHandler<Object, Object> {
 			lineItem.setDescription("Hashpower sold to the Nicehash Pool");
 		} else if (payment.getPool().equalsIgnoreCase("siacoin")) {
 			lineItem.setDescription("Siacoin Mining");
+		} else if (payment.getPool().equalsIgnoreCase("nanopool")) {
+			lineItem.setDescription("Ethereum Mining");
 		}
 		lineItem.setAmount(payment.getAmount().multiply(payment.getUsd()));
 		lineItem.setDetailType(LineDetailTypeEnum.SALES_ITEM_LINE_DETAIL);
@@ -212,6 +226,12 @@ public class CreateSalesReceipts implements RequestHandler<Object, Object> {
 			ReferenceType itemRef = new ReferenceType();
 			itemRef.setName("Hashing Power:Nicehash");
 			itemRef.setValue("4");
+			return itemRef;
+		}
+		if (payment.getPool().equalsIgnoreCase("nanopool")){
+			ReferenceType itemRef = new ReferenceType();
+			itemRef.setName("Hashing Power:Nicehash");
+			itemRef.setValue("11");
 			return itemRef;
 		}
 		if (payment.getPool().equalsIgnoreCase("siamining")){
